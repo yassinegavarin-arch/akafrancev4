@@ -6,7 +6,6 @@
     <title>AKA France — Alliance Industrielle Franco-Chinoise</title>
     <link rel="icon" type="image/png" href="FaviconAKA.png">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -104,7 +103,7 @@
             line-height: 1.7;
         }
 
-        /* ===== HEADER (V1 - gris semi-opaque au scroll) ===== */
+        /* ===== HEADER (MODIFIÉ : Blanc semi-opaque au scroll) ===== */
         header {
             position: fixed;
             top: 0;
@@ -116,10 +115,11 @@
         }
 
         header.scrolled {
-            background: rgba(28, 25, 23, 0.75);
+            background: rgba(255, 255, 255, 0.95); /* Fond BLANC presque opaque */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 14px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Ombre légère */
         }
 
         .header-inner {
@@ -145,7 +145,9 @@
 
         header.scrolled .brand-logo {
             height: 50px;
-            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+            filter: none; /* Enlève l'ombre portée blanche inutile sur fond blanc */
+            /* Si votre logo est blanc et disparait, décommentez la ligne ci-dessous pour le rendre noir */
+            /* filter: brightness(0); */
         }
 
         nav {
@@ -160,9 +162,14 @@
             font-weight: 500;
             letter-spacing: 0.05em;
             text-decoration: none;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.9); /* Blanc au départ (sur Hero) */
             transition: all 0.3s ease;
             position: relative;
+        }
+
+        /* Changement de couleur des liens au scroll */
+        header.scrolled .nav-link {
+            color: var(--color-text); /* Devient gris foncé */
         }
 
         .nav-link::after {
@@ -182,6 +189,11 @@
 
         .nav-link:hover {
             color: #fff;
+        }
+        
+        /* Hover au scroll reste foncé ou prend la couleur de marque */
+        header.scrolled .nav-link:hover {
+            color: var(--color-brand);
         }
 
         .nav-cta {
@@ -218,8 +230,13 @@
         .menu-toggle span {
             width: 25px;
             height: 2px;
-            background: #fff;
+            background: #fff; /* Blanc au départ */
             transition: all 0.3s ease;
+        }
+
+        /* Burger menu devient noir au scroll */
+        header.scrolled .menu-toggle span {
+            background: var(--color-text);
         }
 
         /* ===== HERO ===== */
@@ -1191,7 +1208,6 @@
 </head>
 <body>
 
-    <!-- Header (V1 style - gris semi-opaque) -->
     <header id="header">
         <div class="container header-inner">
             <a href="#top" class="brand">
@@ -1213,7 +1229,6 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="#apropos" onclick="toggleMenu()">À propos</a></li>
@@ -1225,7 +1240,6 @@
         </ul>
     </div>
 
-    <!-- Hero (V1 wording + V3 slideshow - sans bouton découvrir) -->
     <section class="hero" id="top">
         <div class="slideshow-bg">
             <img src="image1.jpg" class="slide active" alt="Industrie AKA 1">
@@ -1249,7 +1263,6 @@
         </div>
     </section>
 
-    <!-- Stats (V1) -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -1272,7 +1285,6 @@
         </div>
     </section>
 
-    <!-- About (V1) -->
     <section class="about" id="apropos">
         <div class="container">
             <div class="about-grid">
@@ -1305,7 +1317,6 @@
         </div>
     </section>
 
-    <!-- Services / Savoir-faire (V2 style) -->
     <section class="services" id="services">
         <div class="container">
             <div class="services-header">
@@ -1378,7 +1389,6 @@
         </div>
     </section>
 
-    <!-- Organisation (V2 style - 2 cartes avec nouveau texte AKA France) -->
     <section class="organisation" id="organisation">
         <div class="container">
             <div class="organisation-header">
@@ -1480,7 +1490,6 @@
         </div>
     </section>
 
-    <!-- Team (V1 style - sans bouton "nous rejoindre") -->
     <section class="team" id="equipe">
         <div class="container">
             <div class="team-header">
@@ -1518,7 +1527,6 @@
         </div>
     </section>
 
-    <!-- Quality / Engagement qualité (V2 sans certifications) -->
     <section class="quality" id="qualite">
         <div class="container">
             <div class="quality-content">
@@ -1579,7 +1587,6 @@
         </div>
     </section>
 
-    <!-- Contact (V1 style) -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-grid">
@@ -1662,7 +1669,6 @@
         </div>
     </section>
 
-    <!-- Footer (V1 style) -->
     <footer>
         <div class="container footer-inner">
             <div class="footer-brand">
@@ -1681,7 +1687,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
@@ -1699,7 +1704,7 @@
                 setInterval(showNextSlide, slideDelay);
             }
 
-            // 2. HEADER SCROLL EFFECT (gris semi-opaque comme V1)
+            // 2. HEADER SCROLL EFFECT (BLANC)
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 80) {
