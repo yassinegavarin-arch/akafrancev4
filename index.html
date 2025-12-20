@@ -103,7 +103,7 @@
             line-height: 1.7;
         }
 
-        /* ===== HEADER (MODIFIÉ : Blanc semi-opaque au scroll) ===== */
+        /* ===== HEADER (Blanc semi-opaque au scroll) ===== */
         header {
             position: fixed;
             top: 0;
@@ -115,11 +115,11 @@
         }
 
         header.scrolled {
-            background: rgba(255, 255, 255, 0.95); /* Fond BLANC presque opaque */
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 14px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Ombre légère */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
         .header-inner {
@@ -145,9 +145,7 @@
 
         header.scrolled .brand-logo {
             height: 50px;
-            filter: none; /* Enlève l'ombre portée blanche inutile sur fond blanc */
-            /* Si votre logo est blanc et disparait, décommentez la ligne ci-dessous pour le rendre noir */
-            /* filter: brightness(0); */
+            filter: none;
         }
 
         nav {
@@ -162,14 +160,13 @@
             font-weight: 500;
             letter-spacing: 0.05em;
             text-decoration: none;
-            color: rgba(255,255,255,0.9); /* Blanc au départ (sur Hero) */
+            color: rgba(255,255,255,0.9);
             transition: all 0.3s ease;
             position: relative;
         }
 
-        /* Changement de couleur des liens au scroll */
         header.scrolled .nav-link {
-            color: var(--color-text); /* Devient gris foncé */
+            color: var(--color-text);
         }
 
         .nav-link::after {
@@ -191,7 +188,6 @@
             color: #fff;
         }
         
-        /* Hover au scroll reste foncé ou prend la couleur de marque */
         header.scrolled .nav-link:hover {
             color: var(--color-brand);
         }
@@ -230,11 +226,10 @@
         .menu-toggle span {
             width: 25px;
             height: 2px;
-            background: #fff; /* Blanc au départ */
+            background: #fff;
             transition: all 0.3s ease;
         }
 
-        /* Burger menu devient noir au scroll */
         header.scrolled .menu-toggle span {
             background: var(--color-text);
         }
@@ -248,7 +243,6 @@
             overflow: hidden;
         }
 
-        /* Slideshow Background */
         .slideshow-bg {
             position: absolute;
             top: 0;
@@ -621,6 +615,137 @@
             font-weight: 300;
             color: var(--color-text-light);
             line-height: 1.7;
+        }
+
+        /* ===== PROCESS (NOUVEAU - Cartographie) ===== */
+        .process {
+            padding: var(--spacing-2xl) 0;
+            background: var(--color-bg);
+            position: relative;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .process-header .section-label {
+            justify-content: center;
+        }
+
+        .process-header .section-label::before {
+            display: none;
+        }
+
+        .process-header .section-desc {
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: var(--color-line);
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--color-bg);
+            border: 2px solid var(--color-brand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-brand);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 8px var(--color-bg);
+        }
+
+        .process-step:hover .step-number {
+            background: var(--color-brand);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .step-content {
+            background: #fff;
+            padding: 24px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.05);
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-content {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+            border-color: var(--color-brand);
+        }
+
+        .step-icon {
+            margin-bottom: 15px;
+            color: var(--color-brown);
+        }
+        
+        .step-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .step-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .step-desc {
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: var(--color-text-light);
+            line-height: 1.5;
+        }
+
+        .step-tag {
+            display: inline-block;
+            background: var(--color-cream);
+            color: var(--color-brand);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
         }
 
         /* ===== ORGANISATION (V2 style - 2 cartes) ===== */
@@ -1112,6 +1237,35 @@
             }
         }
 
+        @media (max-width: 900px) {
+            /* Responsive Processus */
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .process-steps::before {
+                top: 0;
+                bottom: 0;
+                left: 25px; /* Ligne verticale à gauche */
+                width: 2px;
+                height: 100%;
+                right: auto;
+            }
+
+            .process-step {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                gap: 20px;
+            }
+
+            .step-number {
+                flex-shrink: 0;
+                margin-bottom: 0;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 display: none;
@@ -1216,7 +1370,7 @@
             <nav>
                 <a href="#apropos" class="nav-link">À propos</a>
                 <a href="#services" class="nav-link">Savoir-faire</a>
-                <a href="#organisation" class="nav-link">Organisation</a>
+                <a href="#processus" class="nav-link">Méthodologie</a> <a href="#organisation" class="nav-link">Organisation</a>
                 <a href="#equipe" class="nav-link">Équipe</a>
                 <a href="#qualite" class="nav-link">Qualité</a>
                 <a href="#contact" class="nav-cta">Contact</a>
@@ -1233,7 +1387,7 @@
         <ul>
             <li><a href="#apropos" onclick="toggleMenu()">À propos</a></li>
             <li><a href="#services" onclick="toggleMenu()">Savoir-faire</a></li>
-            <li><a href="#organisation" onclick="toggleMenu()">Organisation</a></li>
+            <li><a href="#processus" onclick="toggleMenu()">Méthodologie</a></li> <li><a href="#organisation" onclick="toggleMenu()">Organisation</a></li>
             <li><a href="#equipe" onclick="toggleMenu()">Équipe</a></li>
             <li><a href="#qualite" onclick="toggleMenu()">Qualité</a></li>
             <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
@@ -1389,6 +1543,80 @@
         </div>
     </section>
 
+    <section class="process" id="processus">
+        <div class="container">
+            <div class="process-header">
+                <div class="section-label">Méthodologie</div>
+                <h2 class="section-title">Notre cycle industriel</h2>
+                <p class="section-desc">Un flux maîtrisé de bout en bout, de l'étude à Nantes jusqu'à la livraison dans vos entrepôts.</p>
+            </div>
+
+            <div class="process-steps">
+                
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-tag">AKA France</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <h3 class="step-title">Étude & Chiffrage</h3>
+                        <p class="step-desc">Analyse technique, co-conception et remise d'offre détaillée (DDP) sous 48h/72h.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-tag">Validation</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        </div>
+                        <h3 class="step-title">Industrialisation & EI</h3>
+                        <p class="step-desc">Lancement outillages, production des Échantillons Initiaux et validation qualité avant série.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-tag">AKA China • Cixi</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
+                        </div>
+                        <h3 class="step-title">Production & Qualité</h3>
+                        <p class="step-desc">Fabrication, assemblage et contrôle qualité strict piloté via notre ERP <strong>LARK</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-tag">Logistique</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 22h20"></path><path d="M4 18h16"></path><path d="M3 14h18"></path><path d="M12 2v8"></path><path d="M4 10h16"></path><path d="M12 2L4 10"></path><path d="M12 2l8 8"></path></svg>
+                        </div>
+                        <h3 class="step-title">Logistique Import</h3>
+                        <p class="step-desc">Gestion des flux maritimes, dédouanement et acheminement vers nos plateformes.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <div class="step-tag">France</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                        </div>
+                        <h3 class="step-title">Stockage & Livraison</h3>
+                        <p class="step-desc">Stockage de sécurité à Nantes et livraison Juste-à-Temps chez vous. Facturation France.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="organisation" id="organisation">
         <div class="container">
             <div class="organisation-header">
@@ -1422,32 +1650,12 @@
                             <span class="value">Contrôle & Qualité</span>
                         </li>
                         <li>
-                            <span class="label">Audit fournisseurs</span>
-                            <span class="value">Validation process</span>
-                        </li>
-                        <li>
-                            <span class="label">Coordination Technique</span>
-                            <span class="value">Lien direct usines (Cixi)</span>
-                        </li>
-                        <li>
                             <span class="label">Hub Logistique</span>
                             <span class="value">Plateforme Europe</span>
                         </li>
                         <li>
-                            <span class="label">Gestion des flux</span>
-                            <span class="value">Import/Export</span>
-                        </li>
-                        <li>
                             <span class="label">Stockage & Distribution</span>
-                            <span class="value">Stockage possible</span>
-                        </li>
-                        <li>
-                            <span class="label">Chiffre d'affaires</span>
-                            <span class="value">~10 M€</span>
-                        </li>
-                        <li>
-                            <span class="label">Équipe</span>
-                            <span class="value">5 Experts Métier</span>
+                            <span class="value">Livraisons Juste-à-temps</span>
                         </li>
                     </ul>
                 </div>
@@ -1678,7 +1886,7 @@
             <div class="footer-links">
                 <a href="#apropos" class="footer-link">À propos</a>
                 <a href="#services" class="footer-link">Savoir-faire</a>
-                <a href="#organisation" class="footer-link">Organisation</a>
+                <a href="#processus" class="footer-link">Méthodologie</a> <a href="#organisation" class="footer-link">Organisation</a>
                 <a href="#equipe" class="footer-link">Équipe</a>
                 <a href="#contact" class="footer-link">Contact</a>
                 <a href="#" class="footer-link">Mentions légales</a>
@@ -1729,7 +1937,7 @@
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.stat, .service-card, .org-card, .team-member, .quality-feature').forEach(el => {
+            document.querySelectorAll('.stat, .service-card, .org-card, .team-member, .quality-feature, .process-step').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(30px)';
                 el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
